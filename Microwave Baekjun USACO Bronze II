@@ -1,0 +1,39 @@
+## Microwave 
+
+Subtask
+Time limit	Memory limit	submit	Correct answer	The person who guessed right	Correct answer rate
+1 second	64 MB	43283	26399	22485	61.571%
+problem
+There is a microwave oven with three time control buttons, ABC. Each button is assigned a certain time, and each time the button is pressed, that time is added to the operating time. The times assigned to buttons A, B, and C are 5 minutes, 1 minute, and 10 seconds, respectively.
+
+Each frozen food is marked with the time T in seconds to cook in the microwave. We need to press the three buttons A, B, and C appropriately so that the sum of the times is exactly T seconds. However, the sum of the number of times buttons A, B, and C are pressed should always be the minimum. This is called the minimum button operation.
+
+If the cooking time is 100 seconds (T=100), you can press B once and C four times. Alternatively, pressing C 10 times will also result in 100 seconds, but 10 times is not the minimum number of times, so this cannot be the answer. In this case, the minimum number of button operations is 5 times, B once and C four times. Also, there are cases where you cannot set the time exactly with three buttons, such as T=234.
+
+You are asked to write a program that finds the minimum number of button presses required to complete a given cooking time of T seconds.
+
+input
+The first line contains the cooking time T (in seconds) as an integer in the range 1 ≤ T ≤ 10,000.
+
+output of power
+You have to print the ABC number of minimum button operations for T seconds in the first line, in order. Leave a space between each number. If you do not press the corresponding button, you have to print the number 0. If you cannot meet T seconds with the three buttons provided, you have to print a negative number -1 in the first line.
+
+Subtask
+number	Distribution of points	limits
+1	30	
+T ≤ 60
+
+2	30	
+T ≤ 300
+
+3	40	
+T ≤ 10,000
+
+Example Input 1 
+100
+Example Output 1 
+0 1 4
+Example Input 2 
+189
+Example Output 2 
+-1
