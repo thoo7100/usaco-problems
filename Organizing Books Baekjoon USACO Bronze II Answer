@@ -1,0 +1,50 @@
+Book organization success
+ 
+Time limit	Memory limit	submit	Correct answer	The person who guessed right	Correct answer rate
+2 seconds	128 MB	2765	1939	1752	72.818%
+problem
+There are N empty boxes lined up in a row, and you want to put M books into the boxes. The boxes are numbered 1 to N, and the books are numbered 1 to M. Here is how to put the books into the boxes. First, you are in front of box 1, holding book 1 in your hand.
+
+If the current book does not fit in the current box, go to 3. Otherwise, go to 2.
+Put the current book in the current box. Take the next book and go to number 1.
+Now move the current box to the other side and seal it with tape so it can't be opened. Bring the next box forward and go to step 1.
+The capacity of box i is A i , and the size of book j is B j . A book can be put into a box if the sum of the sizes of the book and the books in the box does not exceed the capacity of the box.
+
+Write a program that calculates the sum of the wasted capacity of the entire box when the books are placed in the above manner. The wasted capacity of a box is the box capacity minus the sum of the sizes of the books in the box.
+
+The order of boxes and books given as input must not be changed.
+
+input
+The first line contains the number of boxes N and the number of books M. The second line contains the capacities of the boxes A 1 , A 2 , ..., A N , and the third line contains B 1 , B 2 , ..., B M .
+
+output of power
+The first line prints the sum of the wasted capacity of the entire box.
+
+limits
+1 ≤ N, M ≤ 50
+1 ≤ A i , B j ≤ 1,000
+Input is given only if all the books can be put into the box in the way given in the problem.
+Example Input 1 
+3 3
+5 5 5
+5 5 5
+Example Output 1 
+0
+Example Input 2 
+3 3
+5 6 7
+5 5 5
+Example Output 2 
+3
+Example Input 3 
+3 1
+2 3 5
+3
+Example Output 3 
+7
+Example Input 4 
+4 5
+3 4 5 6
+3 3 3 3 3
+Example Output 4 
+3
