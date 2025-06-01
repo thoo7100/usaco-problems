@@ -1,0 +1,35 @@
+// Source: https://usaco.guide/general/io
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main{
+    static BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter pw = new PrintWriter(System.out);
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        st = new StringTokenizer(r.readLine());
+        int time = Integer.parseInt(st.nextToken());
+        if(time%10!=0){
+            pw.println(-1);
+        }
+        else{ 
+            pw.println((time/300)+" "+(time%300/60)+" "+(time%300%60/10));
+        }
+        pw.flush();
+    }
+}
+/*
+st = new StringTokenizer(r.readLine());
+read line
+
+st.nextToken()
+return next element as stinrg value sperated by spcae. 
+if there is no element, induce error
+
+Integer.parseInt(st.nextToken());
+string to integer casting
+
+
+*/
