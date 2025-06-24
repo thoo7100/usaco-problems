@@ -1,0 +1,77 @@
+// Source: https://usaco.guide/general/io
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    static BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter pw = new PrintWriter(System.out);
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        st = new StringTokenizer(r.readLine());
+        int bucketacapacity = Integer.parseInt(st.nextToken());
+        int bucketamilk = Integer.parseInt(st.nextToken());
+
+        st = new StringTokenizer(r.readLine());
+        int bucketbcapacity = Integer.parseInt(st.nextToken());
+        int bucketbmilk = Integer.parseInt(st.nextToken());
+
+        st = new StringTokenizer(r.readLine());
+        int bucketccapacity = Integer.parseInt(st.nextToken());
+        int bucketcmilk = Integer.parseInt(st.nextToken());
+        
+        for(int x = 0; x < 100;){
+            while(true){
+                if(bucketbcapacity<=bucketbmilk||bucketamilk == 0){
+                    break;
+                }
+                else{
+                    bucketamilk--;
+                    bucketbmilk++;
+                }
+            }
+            x++;
+            while(true){
+                if(bucketccapacity<=bucketcmilk||bucketbmilk == 0){
+                    break;
+                }
+                else{
+                    bucketbmilk--;
+                    bucketcmilk++;
+                }
+            }
+            x++;
+            while(true){
+                if(bucketacapacity<=bucketamilk||bucketcmilk == 0){
+                    break;
+                }
+                else{
+                    bucketcmilk--;
+                    bucketamilk++;
+                }
+            }
+            x++;
+        }
+        
+        pw.println(bucketamilk);
+        pw.println(bucketbmilk);
+        pw.println(bucketcmilk);
+
+        pw.flush();
+    }
+}
+
+/*
+st = new StringTokenizer(r.readLine());
+read line
+
+st.nextToken()
+return next element as stinrg value sperated by spcae. 
+if there is no element, induce error
+
+Integer.parseInt(st.nextToken());
+string to integer casting
+
+
+*/
