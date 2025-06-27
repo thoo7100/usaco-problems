@@ -1,0 +1,135 @@
+// Source: https://usaco.guide/general/io
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    static BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter pw = new PrintWriter(System.out);
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        char[][] board = new char[19][19];
+
+        for(int y = 0; y<19; y++){
+            st = new StringTokenizer(r.readLine());
+            for(int x = 0; x<19; x++){
+                board[y][x] = ((st.nextToken()).charAt(0));
+            }
+        }
+
+        boolean gameflag = false;
+
+
+        //left to right checker
+        for(int y = 0; y<19; y++){
+            for(int x = 0; x<15;x++){
+                if((board[y][x]==board[y][x+1])&&(board[y][x+1]==board[y][x+2])&&(board[y][x+2]==board[y][x+3])&&(board[y][x+3]==board[y][x+4])&&(board[y][x]!='0')){
+                    if(x!=0){
+                        if(board[y][x-1]==board[y][x]){
+                            break;
+                        }
+                    }
+                    if(x!=14){
+                        if(board[y][x+4]==board[y][x+5]){
+                            break;
+                        }
+                    }
+                    pw.println(board[y][x]);
+                    pw.print(y+1+" ");
+                    pw.print(x+1);
+                    pw.println();
+                    gameflag = true;
+                }
+            }
+        }
+        //up to down checker
+        for(int x = 0; x<15; x++){
+            for(int y = 0; y<19;y++){
+                if((board[x][y]==board[x+1][y])&&(board[x+1][y]==board[x+2][y])&&(board[x+2][y]==board[x+3][y])&&(board[x+3][y]==board[x+4][y])&&(board[x][y]!='0')){
+                    if(x!=0){
+                        if(board[x-1][y]==board[x][y]){
+                            break;
+                        }
+
+                    } 
+                    if(x!=14){
+                        if(board[x+4][y]==board[x+5][y]){
+                            break;
+                        }
+                    }
+                    pw.println(board[x][y]);
+                    pw.print(x+1+" ");
+                    pw.print(y+1);
+                    pw.println();
+                    gameflag = true;
+                }
+            }
+        }
+        //upper-right diagnal checker
+        for(int y = 4; y<19;y++){
+            for(int x = 0; x<15;x++){
+                if((board[(y)][x]==board[(y-1)][x+1])&&(board[y-1][x+1] == board[y-2][x+2])&&(board[y-2][x+2] == board[y-3][x+3])&&(board[y-3][x+3] == board[y-4][x+4])&&(board[y][x]!='0')){
+                    if(y!=4){
+                        if(board[(y-5)][x+5]==board[(y-4)][x+4]){
+                                break;
+                        }
+                    }
+                    if(x!=14 && x!=0 && y != 18){
+                        if(board[y+1][x-1]==board[y][x]){
+                            break;
+                        }
+                    }
+                    pw.println(board[y][x]);
+                    pw.print(y+1+" ");
+                    pw.print(x+1);
+                    pw.println();
+                    gameflag = true;
+                }
+            }
+        }
+        //lower-right diagnal checker
+        for(int y = 0; y<15;y++){
+            for(int x = 0; x<15; x++){
+                if((board[(y)][x]==board[(y+1)][x+1])&&(board[y+1][x+1] == board[y+2][x+2])&&(board[y+2][x+2] == board[y+3][x+3])&&(board[y+3][x+3] == board[y+4][x+4])&&(board[y][x]!='0')){
+                    if(x!=14 && y!=14){
+                        if(board[(y+5)][x+5]==board[(y+4)][x+4]){
+                                break;
+                        }
+                    }
+                    if(y!=0 && x!=0){
+                        if(board[y-1][x-1]==board[y][x]){
+                            break;
+                        }
+                    }
+                    pw.println(board[y][x]);
+                    pw.print(y+1+" ");
+                    pw.print(x+1);
+                    pw.println();
+                    gameflag = true;
+                }
+            }
+        }
+        if(gameflag == false){
+            pw.println('0');
+        }
+
+
+        pw.flush();
+    }
+}  
+
+/*
+st = new StringTokenizer(r.readLine());
+read line
+
+st.nextToken()
+return next element as stinrg value sperated by spcae. 
+if there is no element, induce error
+
+Integer.parseInt(st.nextToken());
+string to integer casting
+
+https://www.acmicpc.net/status?user_id=bluepillow&problem_id=1526&from_mine=1
+https://www.acmicpc.net/status?user_id=bluepillow&problem_id=7568&from_mine=1
+*/
