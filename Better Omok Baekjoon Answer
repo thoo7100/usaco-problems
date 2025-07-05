@@ -1,0 +1,172 @@
+// Source: https://usaco.guide/general/io
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    static BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter pw = new PrintWriter(System.out);
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        board = new char[40][40];
+
+        for(int y = 0; y<19; y++){
+            st = new StringTokenizer(r.readLine());
+            for(int x = 0; x<19; x++){
+                board[y+10][x+10] = ((st.nextToken()).charAt(0));
+            }
+        }
+
+        up();
+        right();
+        rightdown();
+        rightup();
+        
+        if(gameflag == false){
+            pw.println(0);
+        }
+
+
+        pw.flush();
+    }
+    static char[][] board; 
+    static boolean gameflag = false;
+    static char omok1,omok2,omok3,omok4,omok5;
+    static char omokb,omokf;
+
+    static void right(){
+        for(int y = 0; y<19; y++){
+            for(int x = 0; x<19; x++){
+                if(rightchecker(y, x)){
+                    pw.println(board[y+10][x+10]);
+                    pw.println(y+1+" "+(x+1));
+                    gameflag = true;
+                }
+            }
+        }
+    }
+
+    static void up(){
+        for(int y = 0; y<19; y++){
+            for(int x = 0; x<19; x++){
+                if(upchecker(y, x)){
+                    pw.println(board[y+10][x+10]);
+                    pw.println(y+1+" "+(x+1));
+                    gameflag = true;
+                }
+            }
+        }
+    }
+
+    static void rightdown(){
+        for(int y = 0; y<19; y++){
+            for(int x = 0; x<19; x++){
+                if(rightdownchecker(y, x)){
+                    pw.println(board[y+10][x+10]);
+                    pw.println(y+1+" "+(x+1));
+                    gameflag = true;
+                }
+            }
+        }
+    }
+
+    static void rightup(){
+        for(int y = 0; y<19; y++){
+            for(int x = 0; x<19; x++){
+                if(rightupchecker(y, x)){
+                    pw.println(board[y+10][x+10]);
+                    pw.println(y+1+" "+(x+1));
+                    gameflag = true;
+                }
+            }
+        }
+    }
+
+    static boolean rightupchecker(int y, int x){
+        omokb = board[10+y+1][10+x-1];
+
+        omok1 = board[10+y][10+x+0];
+        omok2 = board[10+y-1][10+x+1];
+        omok3 = board[10+y-2][10+x+2];
+        omok4 = board[10+y-3][10+x+3];
+        omok5 = board[10+y-4][10+x+4];
+
+        omokf = board[10+y-5][10+x+5];
+
+
+        if((omok1 == omok2) && (omok1 == omok3) && (omok1 == omok4) && (omok1 == omok5) && (omok1!='0') && (omok1!=omokb) && (omok1!=omokf)){
+            return true;
+        }
+        return false;
+    }
+    
+    static boolean rightdownchecker(int y, int x){
+        omokb = board[10+y-1][10+x-1];
+
+        omok1 = board[10+y][10+x+0];
+        omok2 = board[10+y+1][10+x+1];
+        omok3 = board[10+y+2][10+x+2];
+        omok4 = board[10+y+3][10+x+3];
+        omok5 = board[10+y+4][10+x+4];
+
+        omokf = board[10+y+5][10+x+5];
+
+
+        if((omok1 == omok2) && (omok1 == omok3) && (omok1 == omok4) && (omok1 == omok5) && (omok1!='0') && (omok1!=omokb) && (omok1!=omokf)){
+            return true;
+        }
+        return false;
+    }
+
+    static boolean upchecker(int y, int x){
+        omokb = board[10+y-1][10+x];
+
+        omok1 = board[10+y][10+x+0];
+        omok2 = board[10+y+1][10+x];
+        omok3 = board[10+y+2][10+x];
+        omok4 = board[10+y+3][10+x];
+        omok5 = board[10+y+4][10+x];
+
+        omokf = board[10+y+5][10+x];
+
+
+        if((omok1 == omok2) && (omok1 == omok3) && (omok1 == omok4) && (omok1 == omok5) && (omok1!='0') && (omok1!=omokb) && (omok1!=omokf)){
+            return true;
+        }
+        return false;
+    }
+
+    static boolean rightchecker(int y, int x){
+        omokb = board[10+y][10+x-1];
+
+        omok1 = board[10+y][10+x+0];
+        omok2 = board[10+y][10+x+1];
+        omok3 = board[10+y][10+x+2];
+        omok4 = board[10+y][10+x+3];
+        omok5 = board[10+y][10+x+4];
+
+        omokf = board[10+y][10+x+5];
+
+
+        if((omok1 == omok2) && (omok1 == omok3) && (omok1 == omok4) && (omok1 == omok5) && (omok1!='0') && (omok1!=omokb) && (omok1!=omokf)){
+            return true;
+        }
+        return false;
+    }
+}  
+
+/*
+st = new StringTokenizer(r.readLine());
+read line
+
+st.nextToken()
+return next element as stinrg value sperated by spcae. 
+if there is no element, induce error
+
+Integer.parseInt(st.nextToken());
+string to integer casting
+
+https://www.acmicpc.net/status?user_id=bluepillow&problem_id=1526&from_mine=1
+https://www.acmicpc.net/status?user_id=bluepillow&problem_id=7568&from_mine=1
+*/
