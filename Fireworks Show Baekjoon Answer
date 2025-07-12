@@ -1,0 +1,55 @@
+// Source: https://usaco.guide/general/io
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    static BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter pw = new PrintWriter(System.out);
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        st = new StringTokenizer(r.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int C = Integer.parseInt(st.nextToken());
+        int[] periodicity = new int[N];
+
+        for(int x = 0; x<N; x++){
+            st = new StringTokenizer(r.readLine());
+            periodicity[x]=Integer.parseInt(st.nextToken());
+        }
+
+        int[] firework = new int[C+1];
+
+        for(int y = 0; y<N; y++){
+            for(int x = 1; x<(C/periodicity[y]+1);x++){
+                firework[(periodicity[y]*x)-1] = y+1;
+            }
+        }
+
+        int fireworkseen = 0;
+
+        for(int x = 0; x<C; x++){
+            if(firework[x]>0){
+                fireworkseen++;
+            }
+        }
+
+        pw.println(fireworkseen);
+
+        pw.flush();
+    }
+}  
+
+/*
+st = new StringTokenizer(r.readLine());
+read line
+
+st.nextToken()
+return next element as stinrg value sperated by spcae. 
+if there is no element, induce error
+
+Integer.parseInt(st.nextToken());
+string to integer casting
+
+*/
