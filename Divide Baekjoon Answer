@@ -1,0 +1,45 @@
+// Source: https://usaco.guide/general/io
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    static BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter pw = new PrintWriter(System.out);
+    static StringTokenizer st;
+
+    public static void main(String[] args) throws IOException {
+        st = new StringTokenizer(r.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        st = new StringTokenizer(r.readLine());
+        int F = Integer.parseInt(st.nextToken());
+        
+        N = N - (N%100);
+
+        for(int x=0; true; x++){
+            if((N + x)%F == 0){
+                if(x<10){
+                    pw.println("0"+x);
+                }
+                else{
+                    pw.println(x);
+                }
+                break;
+            }
+        }
+
+        pw.flush();
+    }
+}  
+
+/*
+st = new StringTokenizer(r.readLine());
+read line
+
+st.nextToken()
+return next element as stinrg value sperated by spcae. 
+if there is no element, induce error
+
+Integer.parseInt(st.nextToken());
+string to integer casting
+*/
